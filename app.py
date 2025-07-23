@@ -2,9 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, origins="*", methods=["GET", "POST", "PUT", "DELETE"], allow_headers="*")
-
-
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 # Hardcoded admin credentials
