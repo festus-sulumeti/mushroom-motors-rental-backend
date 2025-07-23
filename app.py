@@ -2,7 +2,8 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # Allow frontend requests (React)
+CORS(app, resources={r"/*": {"origins": "*"}})
+
 
 # Hardcoded admin credentials
 ADMIN_EMAIL = 'admin@gmail.com'
