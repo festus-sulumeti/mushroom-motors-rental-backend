@@ -5,3 +5,4 @@ venv
 alembic.ini
 __pycache__/
 alembic/
+.vscode/
