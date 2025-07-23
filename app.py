@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from werkzeug.security import generate_password_hash
+from werkzeug.security import check_password_hash
 from config import DATABASE_CONFIG
 from models import db, User
 import os
@@ -57,6 +58,32 @@ def signup():
     db.session.commit()
 
     return jsonify({'success': True, 'message': 'User registered successfully'}), 201
+
+# ---- User Login ----
+@app.route('/api/auth/login', methods=['POST'])
+def user_login():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+
+    if not email or not password:
+        return jsonify({'success': False, 'message': 'Email and password are required'}), 400
+
+    user = User.query.filter_by(email=email).first()
+    if user and check_password_hash(user.password_hash, password):
+        return jsonify({
+            'success': True,
+            'message': 'Login successful',
+            'user': {
+                'id': user.id,
+                'name': user.name,
+                'email': user.email,
+                'is_admin': user.is_admin
+            }
+        }), 200
+    else:
+        return jsonify({'success': False, 'message': 'Invalid credentials'}), 401
+
 
 # ---- Run App Locally ----
 if __name__ == '__main__':
