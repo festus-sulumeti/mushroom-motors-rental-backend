@@ -6,3 +6,4 @@ alembic.ini
 __pycache__/
 alembic/
 .vscode/
+config.py
