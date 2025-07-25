@@ -147,6 +147,11 @@ def update_car(car_id):
     db.session.commit()
     return jsonify({'success': True, 'message': 'Car updated successfully'}), 200
 
+@app.route('/api/cars/count', methods=['GET'])
+def get_car_count():
+    count = Car.query.count()
+    return jsonify({'count': count}), 200
+
 # ----------------- Run Server -----------------
 if __name__ == '__main__':
     with app.app_context():
