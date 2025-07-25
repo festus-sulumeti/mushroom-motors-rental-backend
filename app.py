@@ -112,6 +112,10 @@ def delete_user(user_id):
 
 
 
+@app.route('/api/users/count', methods=['GET'])
+def get_user_count():
+    count = User.query.count()
+    return jsonify({'count': count}), 200
 
 # ---- Run App Locally ----
 if __name__ == '__main__':
