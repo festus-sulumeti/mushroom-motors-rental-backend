@@ -100,6 +100,17 @@ def get_users():
     ]
     return jsonify({'users': user_list}), 200
 
+@app.route('/api/users/<int:user_id>', methods=['DELETE'])
+def delete_user(user_id):
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({'success': False, 'message': 'User not found'}), 404
+
+    db.session.delete(user)
+    db.session.commit()
+    return jsonify({'success': True, 'message': 'User deleted successfully'}), 200
+
+
 
 
 # ---- Run App Locally ----
