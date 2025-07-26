@@ -27,7 +27,6 @@ It provides RESTful APIs for vehicle inventory, user management, booking, paymen
 ## Why Certain Files Are in `.gitignore`
 
 - **.env**: Contains secrets (API keys, passwords) that must not be exposed.
-- **node_modules/**: Dependency binaries; can be restored from `package.json`.
 - **logs/**: Runtime logs; may contain sensitive info and grow large.
 - **coverage/**: Test coverage reports; generated during CI/testing.
 - **dist/** or **build/**: Compiled output; not needed in source control.
