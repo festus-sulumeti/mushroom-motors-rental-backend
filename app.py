@@ -152,6 +152,24 @@ def get_car_count():
     count = Car.query.count()
     return jsonify({'count': count}), 200
 
+# ----------------- Rented Cars Route -----------------
+@app.route('/api/cars/rented', methods=['GET'])
+def get_rented_cars():
+    rented_cars = Car.query.filter_by(status='Rented').all()
+    return jsonify({
+        'rented_cars': [
+            {
+                'id': car.id,
+                'name': car.name,
+                'model': car.model,
+                'status': car.status,
+                'created_at': car.created_at.isoformat()
+            }
+            for car in rented_cars
+        ]
+    }), 200
+
+
 # ----------------- Run Server -----------------
 if __name__ == '__main__':
     with app.app_context():
