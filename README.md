@@ -22,44 +22,7 @@ It provides RESTful APIs for vehicle inventory, user management, booking, paymen
 - **Database:** Relational database (e.g., PostgreSQL/MySQL) managed via migrations.
 - **Environment Variables:** Sensitive data and configuration managed via `.env` files.
 
-## Project Structure
 
-- **src/**  
-  Main application source code:
-  - `controllers/` — Handle HTTP requests and responses.
-  - `models/` — Define database schemas and ORM models.
-  - `routes/` — API route definitions.
-  - `services/` — Business logic and integrations.
-  - `utils/` — Utility functions and helpers.
-
-- **config/**  
-  Configuration files for environment variables, database connections, and third-party services.
-
-- **migrations/**  
-  Database migration scripts for schema evolution.
-
-- **tests/**  
-  Automated unit and integration tests.
-
-- **package.json**  
-  Project manifest: dependencies, scripts, and metadata.
-
-- **.env**  
-  Environment variables for secrets and configuration.  
-  **Should be in `.gitignore`** to protect sensitive data.
-
-- **.gitignore**  
-  Specifies files and directories to exclude from version control.
-
-## Files & Folders Explained
-
-- **src/**: All backend logic and API endpoints.
-- **config/**: Centralized configuration management.
-- **migrations/**: Database schema changes and versioning.
-- **tests/**: Ensures code reliability and correctness.
-- **package.json**: Dependency and script management.
-- **.env**: Secrets and environment-specific settings.
-- **.gitignore**: Prevents sensitive and unnecessary files from being tracked.
 
 ## Why Certain Files Are in `.gitignore`
 
